@@ -53,13 +53,13 @@ $optionSuggestion
 
 $optionPraise = new \Ribeiro\HTML\Field\Child\Option();
 $optionPraise
-    ->setValue(1)
+    ->setValue(2)
     ->setTitle('Elogio')
 ;
 
 $optionComplaint = new \Ribeiro\HTML\Field\Child\Option();
 $optionComplaint
-    ->setValue(1)
+    ->setValue(3)
     ->setTitle('Reclamacao')
 ;
 
