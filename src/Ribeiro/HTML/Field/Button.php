@@ -8,7 +8,7 @@ class Button implements IField {
     private $title;
     private $id;
 
-    public function render()
+    public function createField()
     {
         $type = ($this->type !== null) ? "type='{$this->type}'" : "";
         $name = ($this->name !== null) ? "name='{$this->name}'" : "";

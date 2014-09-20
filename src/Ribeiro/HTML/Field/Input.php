@@ -9,7 +9,7 @@ class Input implements IField {
     private $value = null;
     private $id = null;
 
-    public function render()
+    public function createField()
     {
         $type = ($this->type !== null) ? "type='{$this->type}'" : "";
         $name = ($this->name !== null) ? "name='{$this->name}'" : "";

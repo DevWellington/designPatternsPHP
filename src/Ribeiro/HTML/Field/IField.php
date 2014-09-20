@@ -3,5 +3,5 @@
 namespace Ribeiro\HTML\Field;
 
 interface IField {
-    public function render();
+    public function createField();
 }

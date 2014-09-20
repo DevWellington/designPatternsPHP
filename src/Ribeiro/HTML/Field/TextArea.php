@@ -9,7 +9,7 @@ class TextArea implements IField {
     private $text;
     private $id;
 
-    public function render()
+    public function createField()
     {
         $rows = ($this->rows !== null) ? "rows='{$this->rows}'" : "";
         $cols = ($this->cols !== null) ? "cols='{$this->cols}'" : "";

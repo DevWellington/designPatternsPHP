@@ -7,7 +7,7 @@ class Option implements IFieldChild {
     private $value;
     private $title;
 
-    public function render()
+    public function createField()
     {
         return "\t<option value='{$this->value}'>{$this->title}</option>\n";
     }

@@ -9,7 +9,7 @@ class Label implements IField {
     private $title;
     private $id;
 
-    public function render()
+    public function createField()
     {
         $name = ($this->name !== null) ? "name='{$this->name}'" : "";
         $for = ($this->for !== null) ? "for='{$this->for}'" : "";

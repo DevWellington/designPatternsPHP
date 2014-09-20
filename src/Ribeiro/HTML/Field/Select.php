@@ -11,14 +11,14 @@ class Select implements IField {
 
     private $option = array();
 
-    public function render()
+    public function createField()
     {
         $name = ($this->name !== null) ? "name='{$this->name}'" : "";
         $id = ($this->id !== null) ? "id='{$this->id}'" : "";
 
         $htmlSelect = "<select {$name} {$id}>\n";
         foreach($this->option as $option)
-            $htmlSelect .= $option->render();
+            $htmlSelect .= $option->createField();
         $htmlSelect .= "</select>\n";
 
         return $htmlSelect;
