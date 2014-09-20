@@ -1,7 +1,12 @@
 <?php
 
-require_once "../src/autoload.php";
+require_once "../vendor/autoload.php";
 
+### Factory Method
+$factoryForm = new \Ribeiro\HTML\Form\FormFactory();
+
+
+// First Form (ContactForm)
 $labelInputName = new \Ribeiro\HTML\Field\Label();
 $labelInputName
     ->setFor('name')
@@ -87,7 +92,8 @@ $button
     ->setTitle('Enviar')
 ;
 
-$contactForm = new \Ribeiro\HTML\Form\Form();
+$contactForm = $factoryForm->getForm();
+
 $contactForm
     ->setName('contactForm')
     ->setId('contactForm')
@@ -103,6 +109,125 @@ $contactForm
         ->setField($button)
 ;
 
+// Second Form (LoginForm)
+$labelInputLogin = new \Ribeiro\HTML\Field\Label();
+$labelInputLogin
+    ->setFor('login')
+    ->setTitle('Login')
+;
+
+$inputLogin = new \Ribeiro\HTML\Field\Input();
+$inputLogin
+    ->setName('login')
+    ->setId('login')
+    ->setType('text')
+    ->setValue('Digite o Login: ')
+;
+
+$labelInputSenha = new \Ribeiro\HTML\Field\Label();
+$labelInputSenha
+    ->setFor('password')
+    ->setTitle('Senha')
+;
+
+$inputSenha = new \Ribeiro\HTML\Field\Input();
+$inputSenha
+    ->setName('password')
+    ->setId('password')
+    ->setType('password')
+;
+
+$buttonLogin = new Ribeiro\HTML\Field\Button();
+$buttonLogin
+    ->setName('logar')
+    ->setId('logar')
+    ->setType('submit')
+    ->setTitle('Logar')
+;
+
+$loginForm = $factoryForm->getForm();
+
+$loginForm
+    ->setName('loginForm')
+    ->setId('loginForm')
+    ->setMethod('POST')
+        ->setField($labelInputLogin)
+        ->setField($inputLogin)
+        ->setField($labelInputSenha)
+        ->setField($inputSenha)
+        ->setField($buttonLogin)
+;
+
+
+// Third Form (UploadForm)
+$labelInputFile = new \Ribeiro\HTML\Field\Label();
+$labelInputFile
+    ->setFor('uploadFile')
+    ->setTitle('Upload File: ')
+;
+
+$inputFile = new \Ribeiro\HTML\Field\Input();
+$inputFile
+    ->setName('uploadFile')
+    ->setId('uploadFile')
+    ->setType('text')
+    ->setValue('Digite Caminho do Arquivo: ')
+;
+
+$uploadForm = $factoryForm->getForm();
+
+$buttonUpload = new Ribeiro\HTML\Field\Button();
+$buttonUpload
+    ->setName('upload')
+    ->setId('upload')
+    ->setType('submit')
+    ->setTitle('Upload')
+;    
+
+$uploadForm
+    ->setName('uploadForm')
+    ->setId('uploadForm')
+    ->setMethod('POST')
+        ->setField($labelInputFile)
+        ->setField($inputFile)
+        ->setField($buttonUpload)
+;
+
+
+// Fourth Form (SearchForm)
+$labelInputSearch = new \Ribeiro\HTML\Field\Label();
+$labelInputSearch
+    ->setFor('search')
+    ->setTitle('Search: ')
+;
+
+$inputSearch = new \Ribeiro\HTML\Field\Input();
+$inputSearch
+    ->setName('search')
+    ->setId('search')
+    ->setType('text')
+    ->setValue('Digite a pesquisa: ')
+;
+
+$buttonSearch = new Ribeiro\HTML\Field\Button();
+$buttonSearch
+    ->setName('bSearch')
+    ->setId('bSearch')
+    ->setType('submit')
+    ->setTitle('Search')
+;   
+
+$searchForm = $factoryForm->getForm();
+ 
+$searchForm
+    ->setName('searchForm')
+    ->setId('searchForm')
+    ->setMethod('POST')
+        ->setField($labelInputSearch)
+        ->setField($inputSearch)
+        ->setField($buttonSearch)
+;
+
 ?>
 <!DOCTYPE html>
     <head>
@@ -115,8 +240,18 @@ $contactForm
     <body>
         <div class="container">
             <h1>Formulario Dinamico</h1>
-            <h3>Formulario Basico</h3>
+
+            <h3>Formulario de Contato</h3>
             <?=$contactForm->render()?>
+
+            <h3>Formulario de Login</h3>
+            <?=$loginForm->render()?>
+
+            <h3>Formulario de Upload</h3>
+            <?=$uploadForm->render()?>
+            
+            <h3>Formulario de Search</h3>
+            <?=$searchForm->render()?>            
         </div>
     </body>
 </html>
