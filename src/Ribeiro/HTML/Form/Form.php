@@ -3,6 +3,7 @@
 namespace Ribeiro\HTML\Form;
 
 use Ribeiro\HTML\Field\IField;
+use Ribeiro\Validator\Validator;
 
 class Form implements IForm {
 
@@ -13,6 +14,13 @@ class Form implements IForm {
 
     private $field = array();
 
+    private $validator;
+
+    public function __construct(Validator $validator)
+    {
+        $this->validator = $validator;
+    }
+
     public function render()
     {
         $name = ($this->name !== null) ? "name='{$this->name}'" : "";
@@ -22,7 +30,7 @@ class Form implements IForm {
 
         $htmlForm = "<form {$name} {$method} {$action} {$id}>\n";
         foreach($this->field as $field)
-            $htmlForm .= $field->render() . "<br />";
+            $htmlForm .= $field->createField() . "<br />";
         $htmlForm .= "</form>\n";
 
         return $htmlForm;
