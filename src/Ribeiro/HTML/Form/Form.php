@@ -12,8 +12,14 @@ class Form implements IForm {
     private $method;
     private $id;
 
-    private $field = array();
+    /**
+     * @var \Ribeiro\HTML\Field\IField
+     */
+    private $field = [];
 
+    /**
+     * @var \Ribeiro\Validator\Validator
+     */
     private $validator;
 
     public function __construct(Validator $validator)
@@ -39,9 +45,9 @@ class Form implements IForm {
     /**
      * @param array $field
      */
-    public function setField(IField $field)
+    public function addField(IField $field)
     {
-        array_push($this->field, $field);
+        $this->field[] = $field;
         return $this;
     }
 
@@ -120,7 +126,5 @@ class Form implements IForm {
     {
         return $this->id;
     }
-
-
 
 } 

@@ -9,7 +9,10 @@ class Select implements IField {
     private $name;
     private $id;
 
-    private $option = array();
+    /**
+     * @var \Ribeiro\HTML\Field\Child\IFieldChild
+     */
+    private $option = [];
 
     public function createField()
     {

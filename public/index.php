@@ -5,6 +5,12 @@ require_once "../vendor/autoload.php";
 ### Factory Method
 $factoryForm = new \Ribeiro\HTML\Form\FormFactory();
 
+/**
+ * Todo:
+ *  Organizar as criações, dependencias, etc.
+ *  Utilizar os Patterns Criacionais e Estruturais.
+ */
+
 
 // First Form (ContactForm)
 $labelInputName = new \Ribeiro\HTML\Field\Label();
@@ -98,15 +104,15 @@ $contactForm
     ->setName('contactForm')
     ->setId('contactForm')
     ->setMethod('POST')
-        ->setField($labelInputName)
-        ->setField($inputName)
-        ->setField($labelInputEmail)
-        ->setField($inputEmail)
-        ->setField($labelSelectContactType)
-        ->setField($selectContactType)
-        ->setField($labelTextAreaDescription)
-        ->setField($textAreaDescription)
-        ->setField($button)
+        ->addField($labelInputName)
+        ->addField($inputName)
+        ->addField($labelInputEmail)
+        ->addField($inputEmail)
+        ->addField($labelSelectContactType)
+        ->addField($selectContactType)
+        ->addField($labelTextAreaDescription)
+        ->addField($textAreaDescription)
+        ->addField($button)
 ;
 
 // Second Form (LoginForm)
@@ -151,11 +157,11 @@ $loginForm
     ->setName('loginForm')
     ->setId('loginForm')
     ->setMethod('POST')
-        ->setField($labelInputLogin)
-        ->setField($inputLogin)
-        ->setField($labelInputSenha)
-        ->setField($inputSenha)
-        ->setField($buttonLogin)
+        ->addField($labelInputLogin)
+        ->addField($inputLogin)
+        ->addField($labelInputSenha)
+        ->addField($inputSenha)
+        ->addField($buttonLogin)
 ;
 
 
@@ -188,9 +194,9 @@ $uploadForm
     ->setName('uploadForm')
     ->setId('uploadForm')
     ->setMethod('POST')
-        ->setField($labelInputFile)
-        ->setField($inputFile)
-        ->setField($buttonUpload)
+        ->addField($labelInputFile)
+        ->addField($inputFile)
+        ->addField($buttonUpload)
 ;
 
 
@@ -215,17 +221,22 @@ $buttonSearch
     ->setId('bSearch')
     ->setType('submit')
     ->setTitle('Search')
-;   
+;
+
+// Example with FieldSet
+$fieldSetTest = new \Ribeiro\HTML\FieldSets\FieldSets();
+$fieldSetTest
+    ->addField($labelInputSearch)
+    ->addField($inputSearch)
+    ->addField($buttonSearch)
+;
 
 $searchForm = $factoryForm->getForm();
- 
 $searchForm
     ->setName('searchForm')
     ->setId('searchForm')
     ->setMethod('POST')
-        ->setField($labelInputSearch)
-        ->setField($inputSearch)
-        ->setField($buttonSearch)
+        ->addField($fieldSetTest)
 ;
 
 ?>
