@@ -37,3 +37,10 @@
 		- Use muitas interfaces para confiar na comuniçação/contrato dos seus objetos.
 		- Separe as classes em namespaces.
 
+###0.3.x
+
+- Fieldsets
+
+    Agora que seu form possui elementos que são renderizados separadamente, vamos fazer o mesmo para um elemento em especial: o fieldset.
+
+    Você deve ser capaz de criar um formulário onde chamando o método "createField()" da fase anterior, seja possível você criar fieldsets e popular esses fieldsets com campos, usando mesmo método.
