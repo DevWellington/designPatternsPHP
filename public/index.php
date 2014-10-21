@@ -9,6 +9,11 @@ $factoryForm = new \Ribeiro\HTML\Form\FormFactory();
  * Todo:
  *  Organizar as criações, dependencias, etc.
  *  Utilizar os Patterns Criacionais e Estruturais.
+
+    Nome: Texto
+    Valor: Texto
+    Descrição: Texto
+    Categoria: Select, com as opções vindo dinâmicamente de um banco de dados sqlite.
  */
 
 
@@ -27,18 +32,18 @@ $inputName
     ->setValue('Digite o Nome')
 ;
 
-$labelInputEmail = new \Ribeiro\HTML\Field\Label();
-$labelInputEmail
-    ->setFor('name')
-    ->setTitle('eMail')
+$labelInputValor = new \Ribeiro\HTML\Field\Label();
+$labelInputValor
+    ->setFor('valor')
+    ->setTitle('Valor')
 ;
 
-$inputEmail = new \Ribeiro\HTML\Field\Input();
-$inputEmail
-    ->setName('email')
-    ->setId('email')
+$inputValor = new \Ribeiro\HTML\Field\Input();
+$inputValor
+    ->setName('valor')
+    ->setId('valor')
     ->setType('text')
-    ->setValue('Digite o eMail')
+    ->setValue('Digite o Valor')
 ;
 
 $labelTextAreaDescription = new \Ribeiro\HTML\Field\Label();
@@ -56,36 +61,30 @@ $textAreaDescription
     ->setText('Digite seu texto')
 ;
 
-$optionSuggestion = new \Ribeiro\HTML\Field\Child\Option();
-$optionSuggestion
-    ->setValue(1)
-    ->setTitle('Sugestao')
-;
 
 $optionPraise = new \Ribeiro\HTML\Field\Child\Option();
 $optionPraise
-    ->setValue(2)
+    ->setValue(1)
     ->setTitle('Elogio')
 ;
 
 $optionComplaint = new \Ribeiro\HTML\Field\Child\Option();
 $optionComplaint
-    ->setValue(3)
+    ->setValue(2)
     ->setTitle('Reclamacao')
 ;
 
 
-$labelSelectContactType = new \Ribeiro\HTML\Field\Label();
-$labelSelectContactType
-    ->setFor('contactType')
-    ->setTitle('Tipo de Contato')
+$labelSelectCategoria = new \Ribeiro\HTML\Field\Label();
+$labelSelectCategoria
+    ->setFor('categoria')
+    ->setTitle('Categoria')
 ;
 
-$selectContactType = new \Ribeiro\HTML\Field\Select();
-$selectContactType
-    ->setName('contactType')
-    ->setId('contactType')
-        ->setOption($optionSuggestion)
+$selectCategoria = new \Ribeiro\HTML\Field\Select();
+$selectCategoria
+    ->setName('categoria')
+    ->setId('categoria')
         ->setOption($optionPraise)
         ->setOption($optionComplaint)
 ;
@@ -98,146 +97,23 @@ $button
     ->setTitle('Enviar')
 ;
 
-$contactForm = $factoryForm->getForm();
+$productRegister = $factoryForm->getForm();
 
-$contactForm
+$productRegister
     ->setName('contactForm')
     ->setId('contactForm')
     ->setMethod('POST')
         ->addField($labelInputName)
         ->addField($inputName)
-        ->addField($labelInputEmail)
-        ->addField($inputEmail)
-        ->addField($labelSelectContactType)
-        ->addField($selectContactType)
+        ->addField($labelInputValor)
+        ->addField($inputValor)
+        ->addField($labelSelectCategoria)
+        ->addField($selectCategoria)
         ->addField($labelTextAreaDescription)
         ->addField($textAreaDescription)
         ->addField($button)
 ;
 
-// Second Form (LoginForm)
-$labelInputLogin = new \Ribeiro\HTML\Field\Label();
-$labelInputLogin
-    ->setFor('login')
-    ->setTitle('Login')
-;
-
-$inputLogin = new \Ribeiro\HTML\Field\Input();
-$inputLogin
-    ->setName('login')
-    ->setId('login')
-    ->setType('text')
-    ->setValue('Digite o Login: ')
-;
-
-$labelInputSenha = new \Ribeiro\HTML\Field\Label();
-$labelInputSenha
-    ->setFor('password')
-    ->setTitle('Senha')
-;
-
-$inputSenha = new \Ribeiro\HTML\Field\Input();
-$inputSenha
-    ->setName('password')
-    ->setId('password')
-    ->setType('password')
-;
-
-$buttonLogin = new Ribeiro\HTML\Field\Button();
-$buttonLogin
-    ->setName('logar')
-    ->setId('logar')
-    ->setType('submit')
-    ->setTitle('Logar')
-;
-
-$loginForm = $factoryForm->getForm();
-
-$loginForm
-    ->setName('loginForm')
-    ->setId('loginForm')
-    ->setMethod('POST')
-        ->addField($labelInputLogin)
-        ->addField($inputLogin)
-        ->addField($labelInputSenha)
-        ->addField($inputSenha)
-        ->addField($buttonLogin)
-;
-
-
-// Third Form (UploadForm)
-$labelInputFile = new \Ribeiro\HTML\Field\Label();
-$labelInputFile
-    ->setFor('uploadFile')
-    ->setTitle('Upload File: ')
-;
-
-$inputFile = new \Ribeiro\HTML\Field\Input();
-$inputFile
-    ->setName('uploadFile')
-    ->setId('uploadFile')
-    ->setType('text')
-    ->setValue('Digite Caminho do Arquivo: ')
-;
-
-$uploadForm = $factoryForm->getForm();
-
-$buttonUpload = new Ribeiro\HTML\Field\Button();
-$buttonUpload
-    ->setName('upload')
-    ->setId('upload')
-    ->setType('submit')
-    ->setTitle('Upload')
-;    
-
-$uploadForm
-    ->setName('uploadForm')
-    ->setId('uploadForm')
-    ->setMethod('POST')
-        ->addField($labelInputFile)
-        ->addField($inputFile)
-        ->addField($buttonUpload)
-;
-
-
-// Fourth Form (SearchForm)
-$labelInputSearch = new \Ribeiro\HTML\Field\Label();
-$labelInputSearch
-    ->setFor('search')
-    ->setTitle('Search: ')
-;
-
-$inputSearch = new \Ribeiro\HTML\Field\Input();
-$inputSearch
-    ->setName('search')
-    ->setId('search')
-    ->setType('text')
-    ->setValue('Digite a pesquisa: ')
-;
-
-$buttonSearch = new Ribeiro\HTML\Field\Button();
-$buttonSearch
-    ->setName('bSearch')
-    ->setId('bSearch')
-    ->setType('submit')
-    ->setTitle('Search')
-;
-
-// Example with FieldSet
-$fieldSetTest = new \Ribeiro\HTML\FieldSets\FieldSets();
-$fieldSetTest
-    ->addField($labelInputSearch)
-    ->addField($inputSearch)
-    ->addField($buttonSearch)
-;
-
-$searchForm = $factoryForm->getForm();
-$searchForm
-    ->setName('searchForm')
-    ->setId('searchForm')
-    ->setMethod('POST')
-        ->addField($fieldSetTest)
-;
 
 ?>
 <!DOCTYPE html>
@@ -250,19 +126,8 @@ $searchForm
     </head>
     <body>
         <div class="container">
-            <h1>Formulario Dinamico</h1>
-
-            <h3>Formulario de Contato</h3>
-            <?=$contactForm->render()?>
-
-            <h3>Formulario de Login</h3>
-            <?=$loginForm->render()?>
-
-            <h3>Formulario de Upload</h3>
-            <?=$uploadForm->render()?>
-            
-            <h3>Formulario de Search</h3>
-            <?=$searchForm->render()?>            
+            <h1>Cadastro de Produtos</h1>
+            <?= $productRegister->render() ?>
         </div>
     </body>
 </html>
