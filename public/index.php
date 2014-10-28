@@ -1,117 +1,97 @@
 <?php
 
-require_once "../vendor/autoload.php";
+require_once "../src/bootstrap.php";
 
 ### Factory Method
-$factoryForm = new \Ribeiro\HTML\Form\FormFactory();
+$factoryForm = new \Ribeiro\HTML\Factories\FormFactory();
 
 /**
  * Todo:
  *  Organizar as criações, dependencias, etc.
  *  Utilizar os Patterns Criacionais e Estruturais.
-
-    Nome: Texto
-    Valor: Texto
-    Descrição: Texto
-    Categoria: Select, com as opções vindo dinâmicamente de um banco de dados sqlite.
+ *
+ * Utilizar Patterns para ajustar o codigo abaixo, Estruturais e Criacionais
+ *
+ * Instalar aura-di e utiliza-lo de alguma forma
+ *
+ * Utilizar Factory para criar o:
+ *  FieldSet com o Label, Input junto
+ *
+ * Utilizar o Facade para chamar o Objeto criado, passando os parametros
+ *
+ * Utilizar o Composite para adicionar os Elementos no FieldSet e no Formulario
+ *
  */
 
 
-// First Form (ContactForm)
-$labelInputName = new \Ribeiro\HTML\Field\Label();
-$labelInputName
-    ->setFor('name')
-    ->setTitle('Name')
-;
+$fieldSetName = new \Ribeiro\HTML\Factories\FieldSetInputFactory(
+    'name', 'Nome', 'text', 'Teste'
+);
 
-$inputName = new \Ribeiro\HTML\Field\Input();
-$inputName
-    ->setName('name')
-    ->setId('name')
-    ->setType('text')
-    ->setValue('Digite o Nome')
-;
+$fieldSetValor = new \Ribeiro\HTML\Factories\FieldSetInputFactory(
+    'valor', 'Valor', 'text', 'Valor'
+);
 
-$labelInputValor = new \Ribeiro\HTML\Field\Label();
-$labelInputValor
-    ->setFor('valor')
-    ->setTitle('Valor')
-;
-
-$inputValor = new \Ribeiro\HTML\Field\Input();
-$inputValor
-    ->setName('valor')
-    ->setId('valor')
-    ->setType('text')
-    ->setValue('Digite o Valor')
-;
-
-$labelTextAreaDescription = new \Ribeiro\HTML\Field\Label();
-$labelTextAreaDescription
-    ->setFor('txaDescription')
-    ->setTitle('Descricao')
-;
+$fieldSetDescription = new \Ribeiro\HTML\Factories\FieldSetTextAreaFactory(
+    'txaDescription', 'Descricao', [30, 10], 'Teste'
+);
 
 
-$textAreaDescription = new \Ribeiro\HTML\Field\TextArea();
-$textAreaDescription
-    ->setName('txaDescription')
-    ->setCols(30)
-    ->setRows(10)
-    ->setText('Digite seu texto')
-;
+
+$rs = $di->get('db')->query('SELECT id, description FROM category');
+$data = $rs->fetchAll(PDO::FETCH_ASSOC);
 
 
-$optionPraise = new \Ribeiro\HTML\Field\Child\Option();
-$optionPraise
-    ->setValue(1)
-    ->setTitle('Elogio')
-;
 
-$optionComplaint = new \Ribeiro\HTML\Field\Child\Option();
-$optionComplaint
-    ->setValue(2)
-    ->setTitle('Reclamacao')
-;
-
+$optFactory = new \Ribeiro\HTML\Factories\OptionPrototypeFactory(
+    new \Ribeiro\HTML\Field\Child\OptionPrototype(),
+    $data
+);
+$ops = $optFactory->getData();
 
 $labelSelectCategoria = new \Ribeiro\HTML\Field\Label();
 $labelSelectCategoria
     ->setFor('categoria')
     ->setTitle('Categoria')
 ;
-
 $selectCategoria = new \Ribeiro\HTML\Field\Select();
 $selectCategoria
     ->setName('categoria')
     ->setId('categoria')
-        ->setOption($optionPraise)
-        ->setOption($optionComplaint)
+    ->setOptions($ops)
 ;
+
+$fieldSet = new \Ribeiro\HTML\FieldSets\FieldSets();
+$fieldSet
+    ->addField($labelSelectCategoria)
+    ->addField($selectCategoria)
+;
+
+
 
 $button = new Ribeiro\HTML\Field\Button();
 $button
-    ->setName('enviar')
-    ->setId('enviar')
+    ->setName('cadastrar')
+    ->setId('cadastrar')
     ->setType('submit')
-    ->setTitle('Enviar')
+    ->setTitle('Cadastrar')
 ;
 
-$productRegister = $factoryForm->getForm();
 
-$productRegister
+
+
+$productComposite = $factoryForm->getForm();
+
+$productComposite
     ->setName('contactForm')
     ->setId('contactForm')
     ->setMethod('POST')
-        ->addField($labelInputName)
-        ->addField($inputName)
-        ->addField($labelInputValor)
-        ->addField($inputValor)
-        ->addField($labelSelectCategoria)
-        ->addField($selectCategoria)
-        ->addField($labelTextAreaDescription)
-        ->addField($textAreaDescription)
-        ->addField($button)
+    ->addField($fieldSetName)
+    ->addField($fieldSetValor)
+    ->addField($fieldSet)
+    ->addField($fieldSetDescription)
+    ->addField($button)
+
 ;
 
 
@@ -127,7 +107,7 @@ $productRegister
     <body>
         <div class="container">
             <h1>Cadastro de Produtos</h1>
-            <?= $productRegister->render() ?>
+            <?= $productComposite->render() ?>
         </div>
     </body>
 </html>

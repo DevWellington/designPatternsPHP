@@ -1,10 +1,13 @@
 <?php
 
-namespace Ribeiro\HTML\Form;
+namespace Ribeiro\HTML\Factories;
 
 class FormFactory implements IFormFactory
 {
-	public function createForm()
+    /**
+     * @return \Ribeiro\HTML\Form\Form
+     */
+    public function createForm()
 	{
 		return 
 		    new \Ribeiro\HTML\Form\Form(
@@ -14,7 +17,10 @@ class FormFactory implements IFormFactory
 		    );
 	}
 
-	public function getForm()
+    /**
+     * @return \Ribeiro\HTML\Form\Form
+     */
+    public function getForm()
 	{
 		return $this->createForm();
 	}

@@ -37,6 +37,15 @@ class Select implements IField {
     }
 
     /**
+     * @param array $opt
+     */
+    public function setOptions(array $options)
+    {
+        $this->option = $options;
+        return $this;
+    }
+
+    /**
      * @return mixed
      */
     public function getOption()

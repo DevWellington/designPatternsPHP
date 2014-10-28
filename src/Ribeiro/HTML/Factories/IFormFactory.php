@@ -1,6 +1,6 @@
 <?php
 
-namespace Ribeiro\HTML\Form;
+namespace Ribeiro\HTML\Factories;
 
 interface IFormFactory
 {
