@@ -2,8 +2,9 @@
 
 require_once "../src/bootstrap.php";
 
-### Factory Method
+### Factories
 $factoryForm = new \Ribeiro\HTML\Factories\FormFactory();
+$fsPrototype = new Ribeiro\HTML\Facade\FieldSetFacade();
 
 /**
  * Todo:
@@ -12,36 +13,27 @@ $factoryForm = new \Ribeiro\HTML\Factories\FormFactory();
  *
  * Utilizar Patterns para ajustar o codigo abaixo, Estruturais e Criacionais
  *
- * Instalar aura-di e utiliza-lo de alguma forma
- *
- * Utilizar Factory para criar o:
- *  FieldSet com o Label, Input junto
- *
  * Utilizar o Facade para chamar o Objeto criado, passando os parametros
  *
  * Utilizar o Composite para adicionar os Elementos no FieldSet e no Formulario
  *
  */
 
-
-$fieldSetName = new \Ribeiro\HTML\Factories\FieldSetInputFactory(
-    'name', 'Nome', 'text', 'Teste'
+$fsName = $fsPrototype->getFieldSet('input',
+    ['name', 'Nome', 'text', 'Teste']
 );
 
-$fieldSetValor = new \Ribeiro\HTML\Factories\FieldSetInputFactory(
-    'valor', 'Valor', 'text', 'Valor'
+$fsValor = $fsPrototype->getFieldSet('input',
+    ['valor', 'Valor', 'text', 'Valor']
 );
 
-$fieldSetDescription = new \Ribeiro\HTML\Factories\FieldSetTextAreaFactory(
-    'txaDescription', 'Descricao', [30, 10], 'Teste'
+$fsDescription = $fsPrototype->getFieldSet('textarea',
+    ['txaDescription', 'Descricao', [30, 10], 'Teste']
 );
-
 
 
 $rs = $di->get('db')->query('SELECT id, description FROM category');
 $data = $rs->fetchAll(PDO::FETCH_ASSOC);
-
-
 
 $optFactory = new \Ribeiro\HTML\Factories\OptionPrototypeFactory(
     new \Ribeiro\HTML\Field\Child\OptionPrototype(),
@@ -86,10 +78,10 @@ $productComposite
     ->setName('contactForm')
     ->setId('contactForm')
     ->setMethod('POST')
-    ->addField($fieldSetName)
-    ->addField($fieldSetValor)
+    ->addField($fsName)
+    ->addField($fsValor)
     ->addField($fieldSet)
-    ->addField($fieldSetDescription)
+    ->addField($fsDescription)
     ->addField($button)
 
 ;
