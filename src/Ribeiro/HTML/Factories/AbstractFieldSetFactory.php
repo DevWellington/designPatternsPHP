@@ -26,6 +26,11 @@ class AbstractFieldSetFactory implements IFieldSetFactory, IField {
         return $this;
     }
 
+    public function getValue()
+    {
+        return $this->value;
+    }
+
     public function getData()
     {
         return $this->createField();

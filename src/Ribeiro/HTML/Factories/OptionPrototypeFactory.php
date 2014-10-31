@@ -15,7 +15,7 @@ class OptionPrototypeFactory implements IFieldFactory {
     private $optionPrototype;
 
     /**
-     * @var array
+     * @var array|\Ribeiro\DB\IDataToOptions
      */
     private $data;
 
@@ -26,7 +26,7 @@ class OptionPrototypeFactory implements IFieldFactory {
     public function __construct
     (
         \Ribeiro\HTML\Field\Child\OptionPrototype $optionPrototype,
-        array $data
+        \Ribeiro\DB\IDataToOptions $data
     ) {
         $this->optionPrototype = $optionPrototype;
         $this->data = $data;
@@ -39,7 +39,7 @@ class OptionPrototypeFactory implements IFieldFactory {
     {
         $optPrototype = new \Ribeiro\HTML\Field\Child\OptionPrototype();
 
-        foreach($this->data as $value){
+        foreach($this->data->getData() as $value){
             $optPrototype->setData($value);
             $this->options[] = clone $optPrototype;
         }
