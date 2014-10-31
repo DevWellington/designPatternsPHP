@@ -19,12 +19,23 @@ class FieldSetFacade implements IFieldSetFacade {
         switch ($type) {
             case 'input':
                 $this->fieldSet = new \Ribeiro\HTML\Factories\FieldSetInputFactory(
-                    $params[0], $params[1], $params[2], $params[3]
+                    $params[0], $params[1], $params[2], $params[3] = null
                 );
                 break;
             case 'textarea':
                 $this->fieldSet = new \Ribeiro\HTML\Factories\FieldSetTextAreaFactory(
-                    $params[0], $params[1], $params[2], $params[3]
+                    $params[0], $params[1], $params[2], $params[3] = null
+                );
+                break;
+            case 'select':
+                $this->fieldSet =  new \Ribeiro\HTML\Factories\FieldSetSelectFactory(
+                    $params[0],
+                    $params[1],
+                    new \Ribeiro\HTML\Factories\OptionPrototypeFactory(
+                        new \Ribeiro\HTML\Field\Child\OptionPrototype(),
+                        new \Ribeiro\DB\Category($params[2])
+                    ),
+                    $params[3] = null
                 );
                 break;
             default:

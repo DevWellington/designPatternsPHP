@@ -32,7 +32,7 @@ class Select implements IField {
      */
     public function setOption(Child\IFieldChild $option)
     {
-        array_push($this->option, $option);
+        $this->option[] = $option;
         return $this;
     }
 

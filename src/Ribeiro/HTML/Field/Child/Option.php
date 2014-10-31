@@ -4,12 +4,41 @@ namespace Ribeiro\HTML\Field\Child;
 
 class Option implements IFieldChild {
 
+    /**
+     * @var mixed
+     */
     private $value;
+
+    /**
+     * @var mixed
+     */
     private $title;
+
+    /**
+     * @var bool
+     */
+    private $selected = false;
 
     public function createField()
     {
-        return "\t<option value='{$this->value}'>{$this->title}</option>\n";
+        $prtSelect = ($this->selected) ? 'selected' : '';
+        return "\t<option value='{$this->value}' {$prtSelect}>{$this->title}</option>\n";
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSelected()
+    {
+        return $this->selected;
+    }
+
+    /**
+     * @param boolean $selected
+     */
+    public function setSelected($selected)
+    {
+        $this->selected = $selected;
     }
 
     /**
