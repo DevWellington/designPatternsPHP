@@ -47,6 +47,11 @@ class OptionPrototypeFactory implements IFieldFactory {
         return $this->options;
     }
 
+    public function getOption($key)
+    {
+        $this->options[$key];
+    }
+
     /**
      * @return array
      */

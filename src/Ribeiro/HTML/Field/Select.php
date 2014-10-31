@@ -2,8 +2,6 @@
 
 namespace Ribeiro\HTML\Field;
 
-use Ribeiro\HTML\Field\Child\IFieldChild;
-
 class Select implements IField {
 
     private $name;

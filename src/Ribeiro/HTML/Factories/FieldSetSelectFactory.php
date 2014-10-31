@@ -22,14 +22,14 @@ class FieldSetSelectFactory extends AbstractFieldSetFactory{
         $this->value = $value;
 
         $this->select = new \Ribeiro\HTML\Field\Select();
+        $this->select->setOptions($this->ops->getData());
     }
 
     public function setValue($value)
     {
-        foreach($this->select->getOption() as $op){
-            if($op->getValue() == $value)
+        foreach($this->ops->getData() as $op)
+            if($op->getTitle() == $value)
                 $op->setSelected(true);
-        }
     }
 
     /**
@@ -46,10 +46,7 @@ class FieldSetSelectFactory extends AbstractFieldSetFactory{
         $this->select
             ->setName($this->name)
             ->setId($this->name)
-            ->setOptions($this->ops->getData())
         ;
-
-        $this->setValue($this->value);
 
         $fieldSet = new \Ribeiro\HTML\FieldSets\FieldSets();
         $fieldSet
