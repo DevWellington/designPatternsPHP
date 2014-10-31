@@ -2,17 +2,12 @@
 
 namespace Ribeiro\HTML\Factories;
 
-use Ribeiro\HTML\Field\IField;
-
-class FieldSetInputFactory implements IFieldFactory, IField {
+class FieldSetInputFactory extends AbstractFieldSetFactory {
 
     /**
      * @var mixed
      */
-    private $name;
-    private $title;
-    private $type;
-    private $value;
+    protected $type;
 
     public function __construct($name, $title, $type, $value = null)
     {
@@ -22,6 +17,9 @@ class FieldSetInputFactory implements IFieldFactory, IField {
         $this->value = $value;
     }
 
+    /**
+     * @return \Ribeiro\HTML\FieldSets\FieldSets
+     */
     public function createField(){
 
         $labelInput = new \Ribeiro\HTML\Field\Label();
@@ -45,11 +43,6 @@ class FieldSetInputFactory implements IFieldFactory, IField {
         ;
 
         return $fieldSet->createField();
-    }
-
-    public function getData()
-    {
-        return $this->createField();
     }
 
 }
