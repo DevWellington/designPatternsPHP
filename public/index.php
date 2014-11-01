@@ -19,7 +19,6 @@ $button
     ->setTitle('Cadastrar')
 ;
 
-
 $formProductComposite = $factoryForm->getForm();
 $formProductComposite
     ->setName('productForm')
@@ -34,15 +33,21 @@ $formProductComposite
 ;
 
 $arrayDataForm = [
-    'name' => 'Valor do [name]',
+    'name' => '',
     'valor' => 'Valor do [valor]',
     'categoria' => 'Notebook',
-    'txaDescription' => 'Valor do [txaDescription]'
+    'txaDescription' => 'Valor do [txaDescription] ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
 ];
 
 // form populate - edit mode
 $populateForm = new \Ribeiro\HTML\Form\PopulateForm($formProductComposite);
 $populateForm->populate($arrayDataForm);
+
+
+$validateForm = $formProductComposite
+    ->getValidator()
+    ->validate($arrayDataForm)
+;
 
 ?>
 <!DOCTYPE html>
@@ -56,6 +61,17 @@ $populateForm->populate($arrayDataForm);
     <body>
         <div class="container">
             <h1>Cadastro de Produtos</h1>
+
+            <?php if(isset($validateForm)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        <?php foreach($validateForm as $alert): ?>
+                            <?=$alert?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
             <?= $formProductComposite->render() ?>
         </div>
     </body>

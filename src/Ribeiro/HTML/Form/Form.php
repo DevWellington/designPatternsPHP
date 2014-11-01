@@ -127,4 +127,20 @@ class Form implements IForm {
         return $this->id;
     }
 
-} 
+    /**
+     * @return Validator
+     */
+    public function getValidator()
+    {
+        return $this->validator;
+    }
+
+    /**
+     * @param Validator $validator
+     */
+    public function setValidator($validator)
+    {
+        $this->validator = $validator;
+    }
+
+}
