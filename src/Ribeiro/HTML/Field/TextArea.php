@@ -13,7 +13,7 @@ class TextArea implements IField {
     {
         $rows = ($this->rows !== null) ? "rows='{$this->rows}'" : "";
         $cols = ($this->cols !== null) ? "cols='{$this->cols}'" : "";
-        $id = ($this->id !== null) ? "id={'$this->id'}" : "";
+        $id = ($this->id !== null) ? "id='$this->id'" : "";
 
         return "<textarea {$rows} {$cols} {$id}>{$this->text}</textarea>";
     }
@@ -78,11 +78,12 @@ class TextArea implements IField {
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $id
      */
-    public function setName($name)
+    public function setId($id)
     {
-        $this->name = $name;
+        $this->id = $id;
         return $this;
     }
-} 
+
+}
