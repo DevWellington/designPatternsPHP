@@ -1,6 +1,7 @@
 {
     "require":{
-        "aura/di": "1.0.0"
+        "aura/di": "1.0.0",
+        "phpunit/phpunit": "4.2.6"
     },
     "minimum-stability": "dev",
     "config": {
