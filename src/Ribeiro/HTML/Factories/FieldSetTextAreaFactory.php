@@ -2,6 +2,8 @@
 
 namespace Ribeiro\HTML\Factories;
 
+use Ribeiro\HTML\Field\TextArea;
+
 class FieldSetTextAreaFactory extends AbstractFieldSetFactory {
 
     /**
@@ -28,8 +30,7 @@ class FieldSetTextAreaFactory extends AbstractFieldSetFactory {
             ->setTitle($this->title)
         ;
 
-
-        $textArea = new \Ribeiro\HTML\Field\TextArea();
+        $textArea = new TextArea();
         $textArea
             ->setName($this->name)
             ->setCols($this->colsRows[0])
