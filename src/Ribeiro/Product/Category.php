@@ -4,8 +4,36 @@ namespace Ribeiro\Product;
 
 class Category {
 
+    /**
+     * @var mixed
+     */
     private $id;
+
+    /**
+     * @var mixed
+     */
     private $description;
+
+    /**
+     * @var array
+     */
+    private $data = [];
+
+    /**
+     * @return array
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function setData($data)
+    {
+        $this->data[] = $data;
+    }
 
     /**
      * @param mixed $description

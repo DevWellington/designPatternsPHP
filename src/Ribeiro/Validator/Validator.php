@@ -4,7 +4,7 @@ namespace Ribeiro\Validator;
 
 use Ribeiro\Request\Request;
 
-class Validator implements IValidator
+class Validator
 {	
 	protected $request;
 
