@@ -9,7 +9,7 @@ class ValidatorValorTest extends \PHPUnit_Framework_TestCase
     {
         $vlValor = new \Ribeiro\Validator\ValidatorValor();
         $vlValor
-            ->setName('name')
+            ->setName('valor')
             ->setValue(133)
         ;
 
@@ -22,12 +22,12 @@ class ValidatorValorTest extends \PHPUnit_Framework_TestCase
     {
         $vlValor = new \Ribeiro\Validator\ValidatorValor();
         $vlValor
-            ->setName('name')
+            ->setName('valor')
             ->setValue(false)
         ;
 
         $this->assertEquals(
-            '<li>O campo [name] nao eh um numero.</li>',
+            '<li>O campo [valor] nao eh um numero.</li>',
             $vlValor->validate()
         );
     }
