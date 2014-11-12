@@ -2,7 +2,7 @@
 
 namespace Ribeiro\Validator;
 
-class ValidateValor extends AbstractValidator
+class ValidatorValor extends AbstractValidator
 {
     public function validate()
     {
