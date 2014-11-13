@@ -4,6 +4,7 @@ namespace Ribeiro\HTML\Field;
 
 class TextArea implements IField {
 
+    private $name;
     private $rows;
     private $cols;
     private $text;
@@ -16,6 +17,23 @@ class TextArea implements IField {
         $id = ($this->id !== null) ? "id='$this->id'" : "";
 
         return "<textarea {$rows} {$cols} {$id}>{$this->text}</textarea>";
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
     }
 
     /**

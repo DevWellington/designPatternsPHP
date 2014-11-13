@@ -2,7 +2,7 @@
 
 namespace Ribeiro\HTML\FieldSets;
 
-class FieldSets implements IFieldSets, \Ribeiro\HTML\Field\IField
+class FieldSets implements IFieldSets
 {
 	/**
 	 * @var \Ribeiro\HTML\Field\IField
