@@ -23,15 +23,15 @@ class ValidatorObserver
     public function addValidador(IValidator $validador)
     {
         $this->validadors[] = $validador;
+        return $this;
     }
 
     public function validate()
     {
-        $return[] = null;
-
         foreach($this->validadors as $validate){
             $v = $validate->validate();
-            if(!$v)
+
+            if(!is_bool($v))
                 $return[$validate->getName()] = $v;
         }
 

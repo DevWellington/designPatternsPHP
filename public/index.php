@@ -33,21 +33,18 @@ $formProductComposite
 ;
 
 $arrayDataForm = [
-    'name' => '',
-    'valor' => 'Valor do [valor]',
+    'name' => 'fas',
+    'valor' => '123',
     'categoria' => 'Notebook',
-    'txaDescription' => 'Valor do [txaDescription] ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+    'txaDescription' => 'Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] Valor do [txaDescription] '
 ];
+
+$validatorOfForm = new \Ribeiro\Validator\Factories\FactoryMethodValidatorFormProdutos();
+$validateForm = $validatorOfForm->getValidator($arrayDataForm)->validate();
 
 // form populate - edit mode
 $populateForm = new \Ribeiro\HTML\Form\PopulateForm($formProductComposite);
 $populateForm->populate($arrayDataForm);
-
-
-$validateForm = $formProductComposite
-    ->getValidator()
-    ->validate($arrayDataForm)
-;
 
 ?>
 <!DOCTYPE html>
