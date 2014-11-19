@@ -2,6 +2,10 @@
 
 class ValidatorDescriptionTest extends PHPUnit_Framework_TestCase
 {
+    public function testVerificaSeClasseEstaComInterfaceCorreta()
+    {
+        $this->assertInstanceOf('\Ribeiro\Validator\IValidator', new \Ribeiro\Validator\ValidatorDescription());
+    }
 
     public function testVerificaSeOValidadorConsegueValidarUmaDescricaoComTamanhoNormal()
     {

@@ -18,4 +18,27 @@ class FieldSetTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($expected, $result);
     }
 
+    public function testVerificaSeFieldSetConsegueReceberUmInput()
+    {
+        $inputMocked = $this->getMock('\Ribeiro\HTML\Field\Input', ['setType']);
+        $inputMocked
+            ->expects($this->any())
+            ->method('setType')
+            ->willReturn('text')
+        ;
+
+        $fieldset = new \Ribeiro\HTML\FieldSets\FieldSets();
+        $fieldset->addField($inputMocked);
+
+        $this->assertEquals(
+            '<fieldset>
+<input     />
+<br /></fieldset>
+'
+            ,
+            $fieldset->createField()
+        );
+
+    }
+
 } 

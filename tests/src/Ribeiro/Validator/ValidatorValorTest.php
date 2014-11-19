@@ -4,6 +4,10 @@ namespace Ribeiro\Validator;
 
 class ValidatorValorTest extends \PHPUnit_Framework_TestCase
 {
+    public function testVerificaSeClasseEstaComInterfaceCorreta()
+    {
+        $this->assertInstanceOf('\Ribeiro\Validator\IValidator', new \Ribeiro\Validator\ValidatorValor());
+    }
 
     public function testVerificaSeOValidadorConsegueValidarUmValorReal()
     {
