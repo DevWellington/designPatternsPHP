@@ -4,16 +4,17 @@ class FieldSetTest extends PHPUnit_Framework_TestCase {
 
     public function testVerificaSeClasseEstaComInterfaceCorreta()
     {
-        $this->assertInstanceOf('\Ribeiro\HTML\FieldSets\IFieldSets', new \Ribeiro\HTML\FieldSets\FieldSets());
+        $this->assertInstanceOf(
+            '\Ribeiro\HTML\FieldSets\IFieldSets',
+            new \Ribeiro\HTML\FieldSets\FieldSets()
+        );
     }
 
     public function testVerificaSeCriaOObjetoEmFormatoHTML()
     {
         $fs = new \Ribeiro\HTML\FieldSets\FieldSets();
         $result = $fs->createField();
-        $expected = "<fieldset>
-</fieldset>
-";
+        $expected = "<fieldset>\n</fieldset>\n";
 
         $this->assertEquals($expected, $result);
     }
@@ -31,10 +32,7 @@ class FieldSetTest extends PHPUnit_Framework_TestCase {
         $fieldset->addField($inputMocked);
 
         $this->assertEquals(
-            '<fieldset>
-<input     />
-<br /></fieldset>
-'
+            "<fieldset>\n<input     />\n<br /></fieldset>\n"
             ,
             $fieldset->createField()
         );
