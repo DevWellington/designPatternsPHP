@@ -1,6 +1,8 @@
 <?php
 
-class FormTest extends PHPUnit_Framework_TestCase {
+namespace Ribeiro\HTML\Form;
+
+class FormTest extends \PHPUnit_Framework_TestCase {
 
     public function testVerificaSeClasseEstaComInterfaceCorreta()
     {
@@ -19,9 +21,7 @@ class FormTest extends PHPUnit_Framework_TestCase {
             )
         );
         $result = $form->render();
-        $expected = "<form    >
-</form>
-";
+        $expected = "<form    >\n</form>\n";
 
         $this->assertEquals($expected, $result);
     }
@@ -41,9 +41,7 @@ class FormTest extends PHPUnit_Framework_TestCase {
             ->render()
         ;
 
-        $expected = "<form name='test' method='POST' action='test' id='test'>
-</form>
-";
+        $expected = "<form name='test' method='POST' action='test' id='test'>\n</form>\n";
 
         $this->assertEquals($expected, $result);
     }

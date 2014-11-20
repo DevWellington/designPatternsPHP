@@ -9,6 +9,8 @@ class ValidatorObserver
      */
     private $validadors = [];
 
+    private $return;
+
     /**
      * @return array
      */
@@ -32,10 +34,10 @@ class ValidatorObserver
             $v = $validate->validate();
 
             if(!is_bool($v))
-                $return[$validate->getName()] = $v;
+                $this->return[$validate->getName()] = $v;
         }
 
-        return $return;
+        return $this->return;
     }
 
 } 

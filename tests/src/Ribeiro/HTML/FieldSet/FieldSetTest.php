@@ -1,6 +1,8 @@
 <?php
 
-class FieldSetTest extends PHPUnit_Framework_TestCase {
+namespace Ribeiro\HTML\FieldSet;
+
+class FieldSetTest extends \PHPUnit_Framework_TestCase {
 
     public function testVerificaSeClasseEstaComInterfaceCorreta()
     {

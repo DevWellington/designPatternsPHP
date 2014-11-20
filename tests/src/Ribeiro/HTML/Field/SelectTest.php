@@ -21,10 +21,7 @@ class SelectTest extends \PHPUnit_Framework_TestCase{
         $select->setOption($option);
 
         $result = $select->createField();
-        $expected = "<select  >
-	<option value='1' >um</option>
-</select>
-";
+        $expected = "<select  >\n\t<option value='1' >um</option>\n</select>\n";
 
         $this->assertEquals($expected, $result);
     }
