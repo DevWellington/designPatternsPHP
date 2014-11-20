@@ -1,6 +1,8 @@
 <?php
 
-class ValidatorDescriptionTest extends PHPUnit_Framework_TestCase
+namespace Ribeiro\Validator;
+
+class ValidatorDescriptionTest extends \PHPUnit_Framework_TestCase
 {
     public function testVerificaSeClasseEstaComInterfaceCorreta()
     {
