@@ -26,7 +26,7 @@ class OptionPrototypeFactory implements IFieldFactory {
     public function __construct
     (
         \Ribeiro\HTML\Field\Child\OptionPrototype $optionPrototype,
-        \Ribeiro\DB\IDataToOptions $data
+        \Ribeiro\DB\IEntity $data
     ) {
         $this->optionPrototype = $optionPrototype;
         $this->data = $data;
