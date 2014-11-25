@@ -9,8 +9,7 @@ use Aura\Di\Config;
 
 $di = new Container(new Forge(new Config));
 
-$SQLiteCon = new \Ribeiro\DB\SQLiteConnection();
-$di->set('db', $SQLiteCon->getConnection());
+$di->set('db', \Ribeiro\DB\DbConnection::getConnection());
 
 
 
