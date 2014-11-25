@@ -3,5 +3,5 @@
 namespace Ribeiro\DB;
 
 interface IConnection {
-    public function getConnection();
+    public static function  getConnection();
 }

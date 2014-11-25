@@ -2,12 +2,12 @@
 
 namespace Ribeiro\DB;
 
-class SQLiteConnection implements IConnection{
+class DbConnection implements IConnection{
 
     /**
      * @return \PDO
      */
-    public function getConnection()
+    public static function getConnection()
     {
         return new \PDO("sqlite:".DBNAME);
     }
